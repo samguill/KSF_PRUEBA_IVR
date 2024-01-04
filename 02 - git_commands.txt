@@ -1,0 +1,78 @@
+-- Conocimientos de git
+
+-- a. Crear un nuevo repositorio local para un proyecto llamado KSF_PRUEBA_IVR.
+
+$ mkdir KSF_PRUEBA_IVR
+$ cd KSF_PRUEBA_IVR
+
+-- para inicializar el git localmente
+$ git init
+
+-- b. Enlazar este repositorio local con el repositorio remoto.
+
+$ git remote add origin https://github.com/samguill/KSF_PRUEBA_IVR.git
+$ git push -u origin master
+
+$ git push -u origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 1.71 KiB | 1.71 MiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/samguill/KSF_PRUEBA_IVR.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+-- c. Crear y cambiarse a una rama llamada IVR-{{CEDULA}}.
+
+$ git checkout -b IVR-10297636
+Switched to a new branch 'IVR-10297636'
+
+-- d. Realizar un commit (suponga que sí hay archivos modificados en su repositorio local).
+
+$ echo "hello world" > saludo.txt
+$ git add saludo.txt
+$ git commit -m "Adding saludo"
+[IVR-10297636 368113b] Adding saludo
+ 1 file changed, 1 insertion(+)
+ create mode 100644 saludo.txt
+
+
+-- e. Subir el contenido del último commit del repositorio local al repositorio remoto.
+
+$ git push --set-upstream origin IVR-10297636
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 306 bytes | 306.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'IVR-10297636' on GitHub by visiting:
+remote:      https://github.com/samguill/KSF_PRUEBA_IVR/pull/new/IVR-10297636
+remote:
+To https://github.com/samguill/KSF_PRUEBA_IVR.git
+ * [new branch]      IVR-10297636 -> IVR-10297636
+branch 'IVR-10297636' set up to track 'origin/IVR-10297636'.
+
+
+-- f. Solicitar la fusión de la rama IVR-{{CEDULA}} con la rama master.
+
+
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+$ git merge IVR-10297636
+Updating 4b09e95..368113b
+Fast-forward
+ saludo.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 saludo.txt
+
+
+-- g. Si la rama estuviera desactualizada, indique el comando para actualizar su repositorio local.
+
+$ git fetch
+$ git pull
